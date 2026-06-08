@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora Web Premium - Leo Tech">
+    <title>Calculadora Web - Leo Tech | Tecnologia, Precisão e Inovação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-container">
+            <div class="logo">Leo Tech</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p class="loading-text">Inicializando...</p>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">Calculadora Web - Leo Tech</h1>
+                <p class="subtitle">Tecnologia, Precisão e Inovação</p>
+            </div>
+            <div class="header-controls">
+                <button class="theme-toggle" id="themeToggle" title="Alternar tema">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <div class="clock" id="clock">00:00:00</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Calculator Container -->
+            <div class="calculator-wrapper">
+                <div class="calculator" id="calculator">
+                    <!-- Top Controls -->
+                    <div class="top-controls">
+                        <div class="mode-indicator">
+                            <span class="mode-label">Modo:</span>
+                            <span class="mode-name" id="modeName">Simples</span>
+                        </div>
+                        <button class="mode-toggle" id="modeToggle" title="Alternar para modo científico">
+                            <span class="toggle-text">⚙ Científico</span>
+                        </button>
+                    </div>
+
+                    <!-- Display Section -->
+                    <div class="display-section">
+                        <div class="memory-indicator" id="memoryIndicator">
+                            <span class="memory-badge" id="memoryBadge">M</span>
+                        </div>
+                        <div class="display-container">
+                            <div class="expression-display" id="expressionDisplay"></div>
+                            <div class="result-display" id="resultDisplay">0</div>
+                        </div>
+                        <button class="copy-btn" id="copyBtn" title="Copiar resultado">
+                            <span>📋</span>
+                        </button>
+                    </div>
+
+                    <!-- Scientific Display (Hidden by default) -->
+                    <div class="scientific-info" id="scientificInfo">
+                        <div class="info-item">
+                            <span class="info-label">Notação:</span>
+                            <span class="info-value" id="notationValue">Padrão</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Ângulo:</span>
+                            <span class="info-value" id="angleValue">Graus</span>
+                        </div>
+                    </div>
+
+                    <!-- Buttons Container -->
+                    <div class="buttons-container">
+                        <!-- Memory Buttons (Scientific) -->
+                        <div class="button-group scientific-group" id="memoryGroup">
+                            <button class="btn btn-memory" data-action="mc" title="Memory Clear">MC</button>
+                            <button class="btn btn-memory" data-action="mr" title="Memory Recall">MR</button>
+                            <button class="btn btn-memory" data-action="mplus" title="Memory Plus">M+</button>
+                            <button class="btn btn-memory" data-action="mminus" title="Memory Minus">M-</button>
+                        </div>
+
+                        <!-- Angle Toggle (Scientific) -->
+                        <div class="button-group scientific-group" id="angleGroup">
+                            <button class="btn btn-scientific btn-toggle" data-action="toggleAngle" id="angleToggle">DEG</button>
+                        </div>
+
+                        <!-- Main Buttons -->
+                        <div class="button-group main-buttons">
+                            <!-- Row 1 -->
+                            <button class="btn btn-function" data-action="clear">C</button>
+                            <button class="btn btn-function" data-action="delete">⌫</button>
+                            <button class="btn btn-function" data-action="percent">%</button>
+                            <button class="btn btn-operator" data-operator="÷">÷</button>
+
+                            <!-- Row 2 -->
+                            <button class="btn btn-number" data-number="7">7</button>
+                            <button class="btn btn-number" data-number="8">8</button>
+                            <button class="btn btn-number" data-number="9">9</button>
+                            <button class="btn btn-operator" data-operator="×">×</button>
+
+                            <!-- Row 3 -->
+                            <button class="btn btn-number" data-number="4">4</button>
+                            <button class="btn btn-number" data-number="5">5</button>
+                            <button class="btn btn-number" data-number="6">6</button>
+                            <button class="btn btn-operator" data-operator="-">−</button>
+
+                            <!-- Row 4 -->
+                            <button class="btn btn-number" data-number="1">1</button>
+                            <button class="btn btn-number" data-number="2">2</button>
+                            <button class="btn btn-number" data-number="3">3</button>
+                            <button class="btn btn-operator" data-operator="+">+</button>
+
+                            <!-- Row 5 -->
+                            <button class="btn btn-number" data-number="0" style="grid-column: span 2;">0</button>
+                            <button class="btn btn-number" data-number=".">.</button>
+                            <button class="btn btn-equals" data-action="equals">=</button>
+                        </div>
+
+                        <!-- Scientific Buttons Group 1 -->
+                        <div class="button-group scientific-group" id="scientificGroup1">
+                            <button class="btn btn-scientific" data-action="sqrt">√</button>
+                            <button class="btn btn-scientific" data-action="cbrt">∛</button>
+                            <button class="btn btn-scientific" data-action="square">x²</button>
+                            <button class="btn btn-scientific" data-action="cube">x³</button>
+                        </div>
+
+                        <!-- Scientific Buttons Group 2 -->
+                        <div class="button-group scientific-group" id="scientificGroup2">
+                            <button class="btn btn-scientific" data-action="power">xʸ</button>
+                            <button class="btn btn-scientific" data-action="factorial">n!</button>
+                            <button class="btn btn-scientific" data-action="abs">|x|</button>
+                            <button class="btn btn-scientific" data-action="toggleSign">+/−</button>
+                        </div>
+
+                        <!-- Scientific Buttons Group 3 -->
+                        <div class="button-group scientific-group" id="scientificGroup3">
+                            <button class="btn btn-scientific" data-action="sin">sin</button>
+                            <button class="btn btn-scientific" data-action="cos">cos</button>
+                            <button class="btn btn-scientific" data-action="tan">tan</button>
+                            <button class="btn btn-scientific" data-action="log">log</button>
+                        </div>
+
+                        <!-- Scientific Buttons Group 4 -->
+                        <div class="button-group scientific-group" id="scientificGroup4">
+                            <button class="btn btn-scientific" data-action="asin">sin⁻¹</button>
+                            <button class="btn btn-scientific" data-action="acos">cos⁻¹</button>
+                            <button class="btn btn-scientific" data-action="atan">tan⁻¹</button>
+                            <button class="btn btn-scientific" data-action="ln">ln</button>
+                        </div>
+
+                        <!-- Scientific Buttons Group 5 -->
+                        <div class="button-group scientific-group" id="scientificGroup5">
+                            <button class="btn btn-scientific" data-action="exp">eˣ</button>
+                            <button class="btn btn-scientific" data-action="pi">π</button>
+                            <button class="btn btn-scientific" data-action="e">e</button>
+                            <button class="btn btn-scientific" data-action="openParen">(</button>
+                        </div>
+
+                        <!-- Scientific Buttons Group 6 -->
+                        <div class="button-group scientific-group" id="scientificGroup6">
+                            <button class="btn btn-scientific" data-action="closeParen">)</button>
+                        </div>
+                    </div>
+
+                    <!-- History Section -->
+                    <div class="history-section">
+                        <div class="history-header">
+                            <h3>Histórico</h3>
+                            <button class="history-clear-btn" id="clearHistory" title="Limpar histórico">🗑</button>
+                        </div>
+                        <div class="history-list" id="historyList">
+                            <p class="history-empty">Nenhum cálculo ainda</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 Leo Tech | Calculadora Web Premium | Versão 1.0</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
