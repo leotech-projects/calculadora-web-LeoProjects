@@ -182,6 +182,7 @@ function handleAction(action) {
         case 'equals':
             if (state.operation) {
                 calculate();
+                updateDisplay();
             }
             break;
         case 'percent':
@@ -656,6 +657,7 @@ function handleKeyboard(e) {
             e.preventDefault();
             if (state.operation) {
                 calculate();
+                updateDisplay();
             }
             break;
         case 'Backspace':
